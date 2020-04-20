@@ -1,0 +1,7 @@
+*.exe
+**/.vscode
+**/.ionide
+**/bin
+**/obj
+coverage.json
+.DS_Store

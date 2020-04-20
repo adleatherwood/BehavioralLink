@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>BehavioralLink</PackageId>
+    <Version>1.0.0.0</Version>
+    <Authors>Anthony Leatherwood</Authors>
+    <Company>adleatherwood</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="gherkin" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
