@@ -12,7 +12,7 @@ namespace BehavioralLink
     {
         Stream Resolve(string filename);
     }
-    
+
     /// <summary>
     /// An abstract that allows for custom execution routines for steps.
     /// </summary>

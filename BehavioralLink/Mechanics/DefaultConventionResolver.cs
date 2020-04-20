@@ -13,18 +13,18 @@ namespace BehavioralLink.Mechanics
     {
         public static readonly Regex CodeCompliant = new Regex(@"[^a-zA-Z0-9_]");
         public static readonly Regex BasicParameters = new Regex(@"['""<](.*?)['"">]|(\d+\.{0,1}\d*)");
-        
-        public static string StripBasicParameters(string value) 
+
+        public static string StripBasicParameters(string value)
         {
             var result = BasicParameters.Replace(value, "");
-            
+
             return result;
         }
 
         public static string TitlizeWords(string value)
         {
             var result = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
-            
+
             return result;
         }
 
@@ -35,13 +35,13 @@ namespace BehavioralLink.Mechanics
             return result;
         }
 
-        public static IEnumerable<string> ExtractBasicParameters(string value) 
+        public static IEnumerable<string> ExtractBasicParameters(string value)
         {
             var result = BasicParameters.Matches(value)
                 .Cast<Match>()
                 .Select(match => match.Groups[2].Value != "" ? match.Groups[2].Value : match.Groups[1].Value )
                 .ToList();
-            
+
             return result;
         }
 
@@ -58,16 +58,16 @@ namespace BehavioralLink.Mechanics
     {
         public void Resolve<T>(PickleStep step, T context)
         {
-            var name = ToName(step); 
+            var name = ToName(step);
             var method = Find(name, context);
-            
+
             if (method == null)
             {
                 throw new Exception($"Unable to find step method: \"{name}\" for step: \"{step.Text}\"");
             }
 
             var parameters = ToParams(method, step);
-            
+
             try
             {
                 method.Invoke(context, parameters);
@@ -82,7 +82,7 @@ namespace BehavioralLink.Mechanics
             }
         }
 
-        public static string ToName(PickleStep step) 
+        public static string ToName(PickleStep step)
         {
             var a = CommonConventions.StripBasicParameters(step.Text);
             var b = CommonConventions.TitlizeWords(a);

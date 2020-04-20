@@ -39,7 +39,7 @@ namespace BehavioralLink.Tests
         public void LoadFromStreamSucceeds()
         {
             var file = new FileInfo("../../../Features/Calculator.feature");
-            
+
             using (var stream = file.OpenRead())
             {
                 var feature = Feature.Load(stream);
@@ -52,7 +52,7 @@ namespace BehavioralLink.Tests
         public void LoadFromReaderSucceeds()
         {
             var file = new FileInfo("../../../Features/Calculator.feature");
-            
+
             using (var stream = file.OpenRead())
             using (var reader = new StreamReader(stream))
             {

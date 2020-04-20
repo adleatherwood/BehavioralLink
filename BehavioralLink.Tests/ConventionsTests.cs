@@ -60,7 +60,7 @@ namespace BehavioralLink.Tests
         {
             var actual = string.Join(' ',
                 CommonConventions.ExtractBasicParameters("abc 1 def '12' ghi \"123\" jkl 12.34"));
-            
+
             Assert.AreEqual("1 12 123 12.34", actual);
         }
     }

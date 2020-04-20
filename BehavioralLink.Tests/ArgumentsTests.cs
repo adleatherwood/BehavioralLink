@@ -20,19 +20,19 @@ namespace BehavioralLink.Tests
         {
             public string Sentence;
             public string[] Words;
-            
+
             public void TheTextOfAndANumberOfAndTheDocString(string text, int number, string doc)
             {
-                Sentence = $"{text} {doc} {number}"; 
+                Sentence = $"{text} {doc} {number}";
             }
 
-            public void TheWordsAreAllListedInOrder() 
+            public void TheWordsAreAllListedInOrder()
             {
                 Words = Sentence.Split(' ');
             }
 
             public void TheyMatchThisTable(PickleTable table)
-            {   
+            {
                 var actual = table.Rows
                     .Select(row => row.Cells.First().Value)
                     .Zip(Words)
