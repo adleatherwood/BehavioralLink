@@ -12,7 +12,7 @@ namespace BehavioralLink.Mechanics
     public static class CommonConventions
     {
         public static readonly Regex CodeCompliant = new Regex(@"[^a-zA-Z0-9_]");
-        public static readonly Regex BasicParameters = new Regex(@"['""<](.*?)['"">]|(\d+\.{0,1}\d*)");
+        public static readonly Regex BasicParameters = new Regex(@"['""<](.*?)['"">]|(\d+\.{0,1}\d*)|(True)|(False)", RegexOptions.IgnoreCase);
 
         public static string StripBasicParameters(string value)
         {
@@ -39,7 +39,11 @@ namespace BehavioralLink.Mechanics
         {
             var result = BasicParameters.Matches(value)
                 .Cast<Match>()
-                .Select(match => match.Groups[2].Value != "" ? match.Groups[2].Value : match.Groups[1].Value )
+                .Select(match =>
+                    match.Groups[4].Value != "" ? match.Groups[4].Value
+                    : match.Groups[3].Value != "" ? match.Groups[3].Value
+                    : match.Groups[2].Value != "" ? match.Groups[2].Value
+                    : match.Groups[1].Value )
                 .ToList();
 
             return result;

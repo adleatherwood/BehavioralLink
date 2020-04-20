@@ -59,9 +59,9 @@ namespace BehavioralLink.Tests
         public void ExtractBasicParametersExtractsNumbersAndStrings()
         {
             var actual = string.Join(' ',
-                CommonConventions.ExtractBasicParameters("abc 1 def '12' ghi \"123\" jkl 12.34"));
+                CommonConventions.ExtractBasicParameters("abc 1 def '12' ghi \"123\" jkl 12.34 mno True pqr false"));
 
-            Assert.AreEqual("1 12 123 12.34", actual);
+            Assert.AreEqual("1 12 123 12.34 True false", actual);
         }
     }
 }

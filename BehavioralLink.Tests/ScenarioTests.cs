@@ -1,15 +1,11 @@
-using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BehavioralLink.Tests
 {
     [TestClass]
-    public class Scenarioests
+    public class ScenarioTests
     {
-        // public static readonly Feature Feature = Feature.Load("Features/Calculator.feature", Resolve.InProjectRoot);
-        // public static readonly Scenario Scenario = Feature.First();
-
         [TestMethod]
         public void TagsAreFound()
         {
