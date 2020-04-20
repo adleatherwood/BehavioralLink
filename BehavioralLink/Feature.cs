@@ -26,7 +26,7 @@ namespace BehavioralLink
     public partial class Feature
     {
         /// <summary>
-        /// Used to load a named feature from an abstract location.  
+        /// Used to load a named feature from an abstract location.
         /// </summary>
         public static Feature Load(string name, ISourceResolver finder)
         {
@@ -37,7 +37,7 @@ namespace BehavioralLink
         }
 
         /// <summary>
-        /// Used to load from a file.  
+        /// Used to load from a file.
         /// </summary>
         public static Feature Load(FileInfo file)
         {

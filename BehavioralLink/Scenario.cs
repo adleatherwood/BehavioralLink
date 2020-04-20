@@ -47,10 +47,10 @@ namespace BehavioralLink
         /// Executes a scenarion passing the given context to each step and using the
         /// default conventions for resolve step methods.
         /// </summary>
-        public static Outcome<T> Execute<T>(this Scenario scenario, T context) 
+        public static Outcome<T> Execute<T>(this Scenario scenario, T context)
             where T : class =>
             Execute(scenario, context, Resolve.ByDefaultConvention);
-        
+
         /// <summary>
         /// Executes a scenarion passing the given context to each step.
         /// </summary>

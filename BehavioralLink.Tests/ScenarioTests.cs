@@ -1,15 +1,11 @@
-using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BehavioralLink.Tests
 {
     [TestClass]
-    public class Scenarioests
+    public class ScenarioTests
     {
-        // public static readonly Feature Feature = Feature.Load("Features/Calculator.feature", Resolve.InProjectRoot);
-        // public static readonly Scenario Scenario = Feature.First();
-        
         [TestMethod]
         public void TagsAreFound()
         {
@@ -19,7 +15,7 @@ namespace BehavioralLink.Tests
                 Scenario: has tag
                 Given a tagged scenario")
                 .First();
-            
+
             var actual = scenario.IsTagged("@atag", "@btag");
 
             Assert.IsTrue(actual);
@@ -34,7 +30,7 @@ namespace BehavioralLink.Tests
                 Scenario: has tag
                 Given a tagged scenario")
                 .First();
-            
+
             var actual = scenario.NotTagged("@btag", "@ctag");
 
             Assert.IsTrue(actual);
@@ -49,7 +45,7 @@ namespace BehavioralLink.Tests
                 Scenario: has tag
                 Given a tagged scenario")
                 .First();
-            
+
             var actual = scenario.IsNamed("Has Tag", "Tag You're It");
 
             Assert.IsTrue(actual);
@@ -64,7 +60,7 @@ namespace BehavioralLink.Tests
                 Scenario: has tag
                 Given a tagged scenario")
                 .First();
-            
+
             var actual = scenario.NotNamed("TaGs DoN't MatTer", "TaGs-R-LaMe");
 
             Assert.IsTrue(actual);
