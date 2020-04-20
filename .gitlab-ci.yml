@@ -37,6 +37,7 @@ branch::publish:
     cd ./BehavioralLink/bin/Release
     NUGET_PKG=$(ls *.nupkg)
     echo PACKAGE := $NUGET_PKG
+    echo dotnet nuget push $NUGET_PKG -k $NUGET_KEY -s https://api.nuget.org/v3/index.json
     dotnet nuget push $NUGET_PKG -k $NUGET_KEY -s https://api.nuget.org/v3/index.json
     cd ../../..
     
