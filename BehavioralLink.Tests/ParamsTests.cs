@@ -13,6 +13,7 @@ namespace BehavioralLink.Tests
             Feature: Parameters are parse and passed correctly
             Scenario: Pass all the parameters
             Then test an integer of 1234
+            Then test a negative integer of -1234
             Then test a decimal of 12.34
             Then test a long of 1234
             Then test a double of 12.34
@@ -30,6 +31,11 @@ namespace BehavioralLink.Tests
             public void TestAnIntegerOf(int value)
             {
                 Assert.AreEqual(1234, value);
+            }
+
+            public void TestANegativeIntegerOf(int value)
+            {
+                Assert.AreEqual(-1234, value);
             }
 
             public void TestADecimalOf(decimal value)

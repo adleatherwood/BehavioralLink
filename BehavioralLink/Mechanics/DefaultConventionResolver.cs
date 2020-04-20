@@ -12,7 +12,7 @@ namespace BehavioralLink.Mechanics
     public static class CommonConventions
     {
         public static readonly Regex CodeCompliant = new Regex(@"[^a-zA-Z0-9_]");
-        public static readonly Regex BasicParameters = new Regex(@"['""<](.*?)['"">]|(\d+\.{0,1}\d*)|(True)|(False)", RegexOptions.IgnoreCase);
+        public static readonly Regex BasicParameters = new Regex(@"['""<](.*?)['"">]|(-{0,1}\d+\.{0,1}\d*)|(True)|(False)", RegexOptions.IgnoreCase);
 
         public static string StripBasicParameters(string value)
         {
