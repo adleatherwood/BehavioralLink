@@ -6,6 +6,13 @@ Simple framework for executing Gherkin style requirements within the test framew
 [![coverage report](https://gitlab.com/adleatherwood/BehavioralLink/badges/master/coverage.svg)](https://gitlab.com/adleatherwood/BehavioralLink/commits/master)
 [![NuGet](https://img.shields.io/nuget/v/BehavioralLink.svg?style=flat)](https://www.nuget.org/packages/BehavioralLink/)
 
+## Attention
+
+This project is managed over at GitLab and replicated here.  Please submit all
+issues and change request over at GitLab.
+
+https://gitlab.com/adleatherwood/BehavioralLink
+
 ## Quick Start
 
 Within the root of the test project, create a feature file:
