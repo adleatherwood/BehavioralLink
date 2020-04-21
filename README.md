@@ -8,8 +8,8 @@ Simple framework for executing Gherkin style requirements within the test framew
 
 ## Attention
 
-This project is managed over at GitLab and replicated here.  Please submit all
-issues and change request over at GitLab.
+This project is managed at GitLab and replicated to GitHub.  Please submit all
+issues and change requests at GitLab.
 
 https://gitlab.com/adleatherwood/BehavioralLink
 
