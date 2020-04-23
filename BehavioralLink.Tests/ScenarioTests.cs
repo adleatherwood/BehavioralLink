@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -64,6 +65,34 @@ namespace BehavioralLink.Tests
             var actual = scenario.NotNamed("TaGs DoN't MatTer", "TaGs-R-LaMe");
 
             Assert.IsTrue(actual);
+        }
+
+        [TestMethod]
+        public void ExceptionsHaveDetail()
+        {
+            var scenario = Feature.Load(@"
+                Feature: Exception messages matter
+                Scenario: Exception message is useful
+                Given a missing step implementation")
+                .First();
+
+            var actual = Try(() => scenario.Execute(new object()));
+            
+            Assert.IsTrue(actual.Message.Contains("Exception message is useful"));
+            Assert.IsTrue(actual.Message.Contains("a missing step implementation"));
+        }
+
+        private Exception Try(Action a)
+        {
+            try 
+            {
+                a();
+                return null;
+            }
+            catch(Exception e)
+            {
+                return e;
+            }
         }
     }
 }

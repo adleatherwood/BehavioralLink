@@ -9,6 +9,15 @@ namespace BehavioralLink
         public static IEnumerable<T> Where<T, A>(this IEnumerable<T> items, Func<T, A, bool> filter, A a) =>
             items.Where(item => filter(item, a));
 
+        public static IEnumerable<T> Iterate<T>(this IEnumerable<T> items, Action<T> action)
+        {
+            foreach (var item in items)
+            {
+                action(item);
+                yield return item;
+            }
+        }
+
         public static IEnumerable<T> Iterate<T, A>(this IEnumerable<T> items, Action<T, A> action, A a)
         {
             foreach (var item in items)

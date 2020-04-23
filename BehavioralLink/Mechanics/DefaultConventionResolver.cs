@@ -16,23 +16,12 @@ namespace BehavioralLink.Mechanics
 
             if (method == null)
             {
-                throw new Exception($"Unable to find step method: \"{name}\" for step: \"{step.Text}\"");
+                throw new Exception($"Unable to find step method: \"{name}\"");
             }
 
             var parameters = ToParams(method, step);
 
-            try
-            {
-                method.Invoke(context, parameters);
-            }
-            catch(Exception e)
-            {
-                /* NOTE: this captures the message and the stack trace from the original
-                 *       exception (most likely an assertion) and makes for a clearer
-                 *       test failure message
-                 */
-                ExceptionDispatchInfo.Capture(e.InnerException).Throw();
-            }
+            method.Invoke(context, parameters);
         }
 
         public static string ToName(PickleStep step)

@@ -1,4 +1,5 @@
 using Gherkin.Pickles;
+using System;
 using System.Linq;
 
 namespace BehavioralLink
@@ -58,10 +59,38 @@ namespace BehavioralLink
             where T : class
         {
             scenario.Pickle.Steps
-                .Iterate(resolver.Resolve, context)
+                .Iterate(step => TryResolve(scenario.Pickle, step, resolver, context))
                 .EvaluateAndIgnore();
 
             return Outcome.Create(context, scenario);
+        }
+
+        private static void TryResolve<T>(Pickle pickle, PickleStep step, IStepResolver resolver, T context)
+        {
+            try
+            {
+                resolver.Resolve(step, context);
+            }
+            catch(Exception e)
+            {
+                var plocs = String.Join(",", 
+                    pickle.Locations.Select(loc => $"{loc.Line}:{loc.Column}"));
+
+                var slocs = String.Join(",", 
+                    step.Locations.Select(loc => $"{loc.Line}:{loc.Column}"));    
+                
+                var message = $@"
+
+Scenario: ({plocs}) {pickle.Name} 
+    Step: ({slocs}) {step.Text}
+   Error: {e.Message}
+
+  Test Trace: 
+{e.StackTrace}
+
+";
+                throw new Exception(message);
+            }
         }
     }
 }
