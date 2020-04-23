@@ -77,14 +77,36 @@ namespace BehavioralLink.Tests
                 .First();
 
             var actual = Try(() => scenario.Execute(new object()));
-            
+
             Assert.IsTrue(actual.Message.Contains("Exception message is useful"));
             Assert.IsTrue(actual.Message.Contains("a missing step implementation"));
         }
 
+        [TestMethod]
+        public void ExceptionsHaveAssertionDetail()
+        {
+            var scenario = Feature.Load(@"
+                Feature: Exception messages matter
+                Scenario: Exception message is useful
+                Given a failing assertion")
+                .First();
+
+            var actual = Try(() => scenario.Execute(new TestContext()));
+
+            Assert.IsTrue(actual.Message.Contains("You shall not pass... this assertion"));
+        }
+
+        class TestContext
+        {
+            public void AFailingAssertion()
+            {
+                Assert.Fail("You shall not pass... this assertion");
+            }
+        }
+
         private Exception Try(Action a)
         {
-            try 
+            try
             {
                 a();
                 return null;

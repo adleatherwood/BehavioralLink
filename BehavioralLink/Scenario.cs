@@ -73,20 +73,20 @@ namespace BehavioralLink
             }
             catch(Exception e)
             {
-                var plocs = String.Join(",", 
+                var plocs = String.Join(",",
                     pickle.Locations.Select(loc => $"{loc.Line}:{loc.Column}"));
 
-                var slocs = String.Join(",", 
-                    step.Locations.Select(loc => $"{loc.Line}:{loc.Column}"));    
-                
+                var slocs = String.Join(",",
+                    step.Locations.Select(loc => $"{loc.Line}:{loc.Column}"));
+
                 var message = $@"
 
-Scenario: ({plocs}) {pickle.Name} 
+Scenario: ({plocs}) {pickle.Name}
     Step: ({slocs}) {step.Text}
-   Error: {e.Message}
+   Error: {(e.InnerException ?? e).Message}
 
-  Test Trace: 
-{e.StackTrace}
+  Test Trace:
+{(e.InnerException ?? e).StackTrace}
 
 ";
                 throw new Exception(message);

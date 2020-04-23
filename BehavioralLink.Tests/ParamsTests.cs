@@ -34,7 +34,7 @@ namespace BehavioralLink.Tests
             .Single();
         }
 
-        enum Color 
+        enum Color
         {
             Red = 0,
             Yellow = 1,
@@ -102,29 +102,29 @@ namespace BehavioralLink.Tests
             public void TestAUtcOffsetOf(DateTimeOffset date)
             {
                 var expected = new DateTimeOffset(2020,8,2,14,30,15,0, TimeSpan.Zero);
-                
+
                 Assert.AreEqual(expected, date);
             }
 
             public void TestALocalOffsetOf(DateTimeOffset date)
             {
                 var offset = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
-                var expected = new DateTimeOffset(2020,8,2,14,30,15,0, offset); 
-                
+                var expected = new DateTimeOffset(2020,8,2,14,30,15,0, offset);
+
                 Assert.AreEqual(expected, date);
             }
 
             public void TestAUtcDateTimeOf(DateTime date)
             {
                 var expected = new DateTime(2020,8,2,14,30,15,0, DateTimeKind.Utc);
-                
+
                 Assert.AreEqual(expected, date);
             }
 
             public void TestALocalDateTimeOf(DateTime date)
             {
                 var expected = new DateTime(2020,8,2,14,30,15,0, DateTimeKind.Local);
-                
+
                 Assert.AreEqual(expected, date);
             }
         }
