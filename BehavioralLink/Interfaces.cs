@@ -5,7 +5,7 @@ namespace BehavioralLink
 {
     /// <summary>
     /// An abstraction that allows for feature source files to be located
-    /// anywhere in the networked universe.  Given a key for a resoure, a
+    /// anywhere in the networked universe.  Given a key for a resource, a
     /// readable stream is returned.
     /// </summary>
     public interface ISourceResolver

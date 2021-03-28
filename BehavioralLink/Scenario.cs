@@ -45,7 +45,7 @@ namespace BehavioralLink
             !IsNamed(scenario, names);
 
         /// <summary>
-        /// Executes a scenarion passing the given context to each step and using the
+        /// Executes a scenario passing the given context to each step and using the
         /// default conventions for resolve step methods.
         /// </summary>
         public static Outcome<T> Execute<T>(this Scenario scenario, T context)
@@ -53,7 +53,7 @@ namespace BehavioralLink
             Execute(scenario, context, Resolve.ByDefaultConvention);
 
         /// <summary>
-        /// Executes a scenarion passing the given context to each step.
+        /// Executes a scenario passing the given context to each step.
         /// </summary>
         public static Outcome<T> Execute<T>(this Scenario scenario, T context, IStepResolver resolver)
             where T : class

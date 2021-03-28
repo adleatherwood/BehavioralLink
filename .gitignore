@@ -5,3 +5,5 @@
 **/obj
 coverage.json
 .DS_Store
+.fake
+.ionide
