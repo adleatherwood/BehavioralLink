@@ -42,7 +42,7 @@ class Context
      *       Parameters like 21 or "abc" are removed, along
      *       with spaces and other invalid method name characters.
      *       What's left will be the name of the method that the
-     *       step will be executed with. 
+     *       step will be executed with.
      */
     public void AFirstNumberOf(int number)
     {
@@ -66,9 +66,9 @@ class Context
 }
 ```
 
-Any number of inline parameters can be passed into the 
+Any number of inline parameters can be passed into the
 step method.  Each parameter is passed in the order it
-is found in the step.  An attempt is made to coerce the 
+is found in the step.  An attempt is made to coerce the
 text value into the type of it's associated parameter.
 
 Tables and Doc strings are also supported and are always
@@ -91,7 +91,7 @@ public void ASetupViaATable(PickleTable table) { ... }
 Scenario outlines, Backgrounds, Rules & Examples are also supported.
 Finally create a unit test in the framework of your choice.  There's
 a variety of ways to organize this.  You can have one unit test to
-execute all feature scenarios or a unit test per scenario.  
+execute all feature scenarios or a unit test per scenario.
 
 ```cs
 [TestClass]
@@ -109,10 +109,27 @@ public class CalculatorTests
 }
 ```
 
-Run the test.  As you can see, Features are just an enumerable of Scenarios.  
+Asynchronous context methods are also supported:
+
+```cs
+class Context
+{
+    public Task AFirstNumberOf(int number)
+    {
+        ...
+    }
+
+    public async Task ASecondNumberOf(int number)
+    {
+        ...
+    }
+}
+```
+
+Run the test.  As you can see, Features are just an enumerable of Scenarios.
 You can filter (or whatever) these scenarios any way you like and execute them.
 
-There are abstractions available that allow you to define your own method 
+There are abstractions available that allow you to define your own method
 resolution/execution conventions and location feature source files from
 where ever you like.
 

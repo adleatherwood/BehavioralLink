@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
+using System.Threading.Tasks;
 using Gherkin.Pickles;
 
 namespace BehavioralLink.Mechanics
@@ -21,7 +22,10 @@ namespace BehavioralLink.Mechanics
 
             var parameters = ToParams(method, step);
 
-            method.Invoke(context, parameters);
+            if (typeof(Task).IsAssignableFrom(method.ReturnType))
+                ((Task) method.Invoke(context, parameters)).GetAwaiter().GetResult();
+            else
+                method.Invoke(context, parameters);
         }
 
         public static string ToName(PickleStep step)
