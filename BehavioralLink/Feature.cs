@@ -5,6 +5,7 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using Gherkin.Ast;
+using System;
 
 namespace BehavioralLink
 {
@@ -21,6 +22,24 @@ namespace BehavioralLink
 
         IEnumerator IEnumerable.GetEnumerator() =>
             GetEnumerator();
+
+        /// <summary>
+        /// Executes every scenario in a feature using the given context factory.
+        /// </summary>
+        public void Execute<T>(Func<T> newContext)
+            where T: class =>
+            this.Scenarios
+                .Iterate(s => s.Execute(newContext()))
+                .EvaluateAndIgnore();
+
+        /// <summary>
+        /// Executes every scenario in a feature with the given context type.
+        /// </summary>
+        public void Execute<T>()
+            where T: class, new() =>
+            this.Scenarios
+                .Iterate(s => s.Execute(new T()))
+                .EvaluateAndIgnore();
     }
 
     public partial class Feature
