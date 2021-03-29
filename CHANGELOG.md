@@ -1,6 +1,15 @@
 # CHANGELOG
 
-<!--- next entry here -->
+## 1.4.0
+
+### Features
+
+- **context** Added async support to context functions.
+- **feature** Added execute all method at the Feature level.
+
+### Fixes
+
+- **documentation** Corrected typos in documentation.
 
 ## 0.1.0
 2020-04-20
